@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhamad Arbian Fahriza Putra - Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        // Changed completely to Helvetica for clean, high-end sans-serif structure
+                        sans: ['Helvetica', 'Arial', 'sans-serif'],
+                        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            deep: '#03001e',
+                            indigo: '#120c3e',
+                            blue: '#1f1c2c',
+                            neonBlue: '#00f2fe',
+                            neonPurple: '#4facfe',
+                            accent: '#6366f1'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #03001e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f1c2c;
+            border-radius: 3px;
+            border: 1px solid #00f2fe;
+        }
+
+        /* Ambient glowing effects */
+        .neon-glow-blue {
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+        }
+        .neon-glow-purple {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+        }
+
+        /* Grid Background pattern */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism base classes */
+        .glass-panel {
+            background: rgba(18, 12, 62, 0.4);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 7s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        /* Image Mask for the Fade Out bottom effect */
+        .profile-mask {
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%);
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%);
+        }
+
+        /* Custom Curved Carousel Styles (Replica of inspiration image arc styling) */
+        .carousel-container {
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
+        }
+        .carousel-item {
+            flex: 0 0 290px;
+            transition: all 0.4s ease;
+            transform: scale(0.88) translateZ(-40px);
+            opacity: 0.4;
+        }
+        .carousel-item.active {
+            transform: scale(1.02) translateZ(40px);
+            opacity: 1;
+            z-index: 10;
+            border-color: rgba(0, 242, 254, 0.5);
+            box-shadow: 0 12px 25px rgba(0, 242, 254, 0.15);
+        }
+        @media(max-width: 640px) {
+            .carousel-item {
+                flex: 0 0 250px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#03001e] text-slate-100 font-sans text-xs sm:text-sm relative overflow-x-hidden bg-grid">
+
+    <!-- Glowing Background Orbs -->
+    <div class="absolute top-10 left-10 w-[250px] h-[250px] bg-indigo-900/20 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-blue-900/15 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-10 left-1/4 w-[300px] h-[300px] bg-brand-accent/5 rounded-full blur-[110px] pointer-events-none"></div>
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 w-full px-4 sm:px-8 py-3 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto glass-panel rounded-xl px-5 py-2 flex items-center justify-between shadow-md">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-brand-neonBlue to-brand-accent flex items-center justify-center font-bold text-white text-base shadow-sm shadow-brand-neonBlue/20">
+                    A
+                </div>
+                <span class="font-bold text-xs tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 hidden sm:block">
+                    ARBIAN.
+                </span>
+            </a>
+
+            <!-- Desktop Menu (Adjusted typography layout) -->
+            <nav class="hidden md:flex items-center space-x-6 font-medium text-slate-400">
+                <a href="#hero" class="hover:text-brand-neonBlue transition-colors duration-200">Home</a>
+                <a href="#about" class="hover:text-brand-neonBlue transition-colors duration-200">About</a>
+                <a href="#experience" class="hover:text-brand-neonBlue transition-colors duration-200">Experience</a>
+                <a href="#projects" class="hover:text-brand-neonBlue transition-colors duration-200">Impact Projects</a>
+                <a href="#skills" class="hover:text-brand-neonBlue transition-colors duration-200">Skills</a>
+            </nav>
+
+            <!-- Interactive Actions -->
+            <div class="flex items-center space-x-3">
+                <a href="#contact" class="px-3.5 py-1.5 bg-gradient-to-r from-brand-neonBlue to-brand-accent hover:from-brand-accent hover:to-brand-neonBlue text-black font-bold text-[11px] rounded-lg transition-all duration-300 shadow-sm hover:scale-105">
+                    Connect
+                </a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden mt-2 mx-2 glass-panel rounded-lg p-3 flex flex-col space-y-2 text-center absolute left-2 right-2 shadow-xl transition-all duration-300">
+            <a href="#hero" class="block py-1.5 text-slate-200 hover:text-brand-neonBlue">Home</a>
+            <a href="#about" class="block py-1.5 text-slate-200 hover:text-brand-neonBlue">About</a>
+            <a href="#experience" class="block py-1.5 text-slate-200 hover:text-brand-neonBlue">Experience</a>
+            <a href="#projects" class="block py-1.5 text-slate-200 hover:text-brand-neonBlue">Impact Projects</a>
+            <a href="#skills" class="block py-1.5 text-slate-200 hover:text-brand-neonBlue">Skills</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-6 pb-12 px-4 sm:px-8 relative">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Info Content -->
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left z-10">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-brand-accent/20 border border-brand-accent/40 text-[11px] text-cyan-300 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Google Student Ambassador 🇮🇩</span>
+                </div>
+                
+                <!-- Main Bold Header (Typography size optimized & updated to clean Helvetica) -->
+                <div class="space-y-1">
+                    <p class="text-brand-neonBlue tracking-wider font-semibold text-xs uppercase">Bonjour! Je m'appelle</p>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-none text-white text-glow">
+                        MUHAMAD ARBIAN<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neonBlue via-brand-accent to-pink-500">FAHRIZA PUTRA</span>
+                    </h1>
+                </div>
+
+                <p class="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                    French Education Student & Impact-Driven Program Manager. Expert in public relations, bilingual emceeing, community events, and social advocacy. Seeking to integrate creative leadership to empower Google's CSR initiatives.
+                </p>
+
+                <!-- Key Metric Highlights -->
+                <div class="grid grid-cols-3 gap-3 pt-3 max-w-sm mx-auto lg:mx-0">
+                    <div class="glass-panel p-2.5 rounded-lg text-center">
+                        <span class="block text-xl font-bold text-brand-neonBlue">30+</span>
+                        <span class="text-[9px] uppercase text-slate-400 tracking-wider">Events Orchestrated</span>
+                    </div>
+                    <div class="glass-panel p-2.5 rounded-lg text-center">
+                        <span class="block text-xl font-bold text-brand-neonPurple">1K+</span>
+                        <span class="text-[9px] uppercase text-slate-400 tracking-wider">People Impacted</span>
+                    </div>
+                    <div class="glass-panel p-2.5 rounded-lg text-center">
+                        <span class="block text-xl font-bold text-white">3.80</span>
+                        <span class="text-[9px] uppercase text-slate-400 tracking-wider">GPA (UNJ)</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-4">
+                    <a href="#projects" class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-brand-neonBlue to-brand-accent hover:from-brand-accent hover:to-brand-neonBlue text-black font-bold rounded-lg shadow-md transition-all duration-300 hover:scale-[1.02] text-center text-xs">
+                        Explore My Work
+                    </a>
+                    <a href="#experience" class="w-full sm:w-auto px-6 py-2.5 glass-card hover:bg-white/10 text-white font-semibold rounded-lg transition-all duration-300 text-center text-xs">
+                        View Chronology
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Visual Showcase (Integrated with photo 'image_5c7724.png' fading out smoothly) -->
+            <div class="lg:col-span-5 flex justify-center items-center relative z-10 mt-6 lg:mt-0">
+                <!-- Visual Container -->
+                <div class="relative w-[280px] sm:w-[320px] aspect-[4/5] rounded-2xl glass-panel p-4 flex flex-col justify-between border-brand-accent/20 shadow-2xl overflow-hidden group">
+                    
+                    <!-- Background decorative glow and layout lines inspired by image_d0e8ca.jpg -->
+                    <div class="absolute -top-10 -left-10 w-28 h-28 bg-brand-neonBlue/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-10 -right-10 w-28 h-28 bg-brand-accent/20 rounded-full blur-2xl"></div>
+
+                    <!-- Inner Top Header -->
+                    <div class="flex justify-between items-center z-10 text-[9px] uppercase tracking-widest text-slate-400">
+                        <div>Arbian / Digital Portfolio</div>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-md shadow-cyan-400/50"></div>
+                    </div>
+
+                    <!-- Clean profile image integration from image_5c7724.png with custom bottom fade out mask -->
+                    <div class="relative flex-1 my-3 flex items-center justify-center z-10 overflow-hidden">
+                        <div class="w-[200px] h-[200px] sm:w-[220px] sm:h-[220px] rounded-full bg-gradient-to-tr from-brand-indigo/60 to-indigo-950 p-0.5 border border-brand-neonBlue/30 relative group-hover:border-brand-neonBlue transition-all duration-500 shadow-inner flex items-center justify-center overflow-hidden">
+                            
+                            <!-- Profile Picture with bottom gradient mask fade-out -->
+                            <div class="w-full h-full rounded-full overflow-hidden relative bg-indigo-950/40 flex items-center justify-center">
+                                <img src="image_5c7724.png" alt="Muhamad Arbian" class="w-[90%] h-[90%] object-contain object-bottom profile-mask transform group-hover:scale-105 transition-all duration-500">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span class="text-[10px] text-white">Universitas Negeri Jakarta</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating software badges (Canva, CapCut, Power BI) inspired directly by image_d0e8ca.jpg style -->
+                            <!-- Canva badge -->
+                            <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-[#00c4cc] flex items-center justify-center text-white text-[9px] font-bold shadow-lg transform rotate-12 animate-float">
+                                <span>Canva</span>
+                            </div>
+                            <!-- CapCut badge -->
+                            <div class="absolute top-1/2 -left-5 w-10 h-10 rounded-full bg-black border border-white/20 flex items-center justify-center text-white text-xs shadow-lg animate-float-delayed">
+                                <i class="fa-solid fa-clapperboard text-cyan-400 text-sm"></i>
+                            </div>
+                            <!-- Power BI badge -->
+                            <div class="absolute -bottom-2 right-4 w-10 h-10 rounded-full bg-[#f2c811] flex items-center justify-center text-black font-bold text-[9px] shadow-lg animate-float">
+                                <span>BI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Lower Caption -->
+                    <div class="z-10 text-center space-y-0.5">
+                        <p class="font-bold text-sm tracking-wide text-white">Google Student Ambassador</p>
+                        <p class="text-[10px] text-cyan-400 font-medium">French Language & Leadership Excellence</p>
+                    </div>
+
+                    <!-- Glowing accent line -->
+                    <div class="absolute bottom-0 inset-x-0 h-[3px] bg-gradient-to-r from-brand-neonBlue via-brand-accent to-pink-500"></div>
+                </div>
+
+                <div class="absolute -top-5 -right-5 text-indigo-500/20 text-7xl font-serif pointer-events-none transform rotate-12">“</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE EXPERIENCE TIMELINE SECTION -->
+    <section id="experience" class="py-16 px-4 sm:px-8 relative bg-[#120c3e]/15">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-brand-neonBlue font-semibold uppercase tracking-wider text-xs">Professional Journey</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white text-glow">MY EXPERIENCE</h2>
+                <div class="h-[2px] w-16 bg-gradient-to-r from-brand-neonBlue to-brand-accent mx-auto"></div>
+                <p class="text-slate-400 text-xs sm:text-sm">Click on any year card to display my leadership positions, responsibilities, and key metrics achieved.</p>
+            </div>
+
+            <!-- Horizontal / Stacked Timeline Years Selector -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                
+                <!-- 2026 CARD -->
+                <button onclick="switchTimeline('timeline-2026')" id="btn-timeline-2026" class="timeline-btn p-5 rounded-xl glass-card text-left transition-all duration-300 border-2 border-brand-neonBlue/80 ring-2 ring-brand-neonBlue/10 bg-gradient-to-br from-brand-indigo/50 to-brand-deep">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-brand-neonBlue mb-1">2026</div>
+                    <p class="text-slate-200 text-[11px] font-semibold truncate">VolunFun & GSA</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">Leading community engagements and advocating technology.</p>
+                </button>
+
+                <!-- 2025 CARD -->
+                <button onclick="switchTimeline('timeline-2025')" id="btn-timeline-2025" class="timeline-btn p-5 rounded-xl glass-card text-left transition-all duration-300 opacity-60 hover:opacity-100">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-slate-400 mb-1 transition-colors duration-300">2025</div>
+                    <p class="text-slate-300 text-[11px] font-semibold truncate">Soco Giving & Material Dev</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">20+ monthly impact programs & curriculum planning.</p>
+                </button>
+
+                <!-- 2024 CARD -->
+                <button onclick="switchTimeline('timeline-2024')" id="btn-timeline-2024" class="timeline-btn p-5 rounded-xl glass-card text-left transition-all duration-300 opacity-60 hover:opacity-100">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-slate-400 mb-1 transition-colors duration-300">2024</div>
+                    <p class="text-slate-300 text-[11px] font-semibold truncate">SCAP & BEM UNJ</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">Advocacy content generation & event coordinations.</p>
+                </button>
+
+                <!-- 2023 CARD -->
+                <button onclick="switchTimeline('timeline-2023')" id="btn-timeline-2023" class="timeline-btn p-5 rounded-xl glass-card text-left transition-all duration-300 opacity-60 hover:opacity-100">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-slate-400 mb-1 transition-colors duration-300">2023</div>
+                    <p class="text-slate-300 text-[11px] font-semibold truncate">Gramedia & KPU</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">Customer operations & foundational student democracy.</p>
+                </button>
+
+            </div>
+
+            <!-- Dynamic Detail Containers -->
+            <div class="glass-panel p-5 sm:p-8 rounded-2xl border-brand-accent/15 shadow-xl relative min-h-[260px]">
+                
+                <!-- 2026 CONTENT (ACTIVE BY DEFAULT) -->
+                <div id="timeline-2026" class="timeline-content space-y-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-white/10 pb-3 gap-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Spearheading Digital and Social Outreach</h3>
+                            <p class="text-xs text-cyan-400">Selected Ambassadorial Representation & Social Engagements</p>
+                        </div>
+                        <span class="self-start md:self-center px-3 py-0.5 rounded-full bg-brand-neonBlue/15 text-brand-neonBlue text-[10px] font-semibold">Current Highlight</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs text-slate-300">
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-cyan-400/15 text-cyan-300 mt-0.5"><i class="fa-solid fa-people-group text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Program Manager — VolunFun (Jakarta)</h4>
+                                    <p class="text-[10px] text-slate-400">Feb 2026 – Present</p>
+                                    <p class="mt-1 leading-relaxed">Executing over 10 custom themed community outreach schedules, serving as bilingual MC, and formulating responsive entertainment parameters to serve underprivileged environments.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-indigo-500/15 text-indigo-300 mt-0.5"><i class="fa-brands fa-google text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Google Student Ambassador (Google Indonesia)</h4>
+                                    <p class="text-[10px] text-slate-400">April 2026 – Present</p>
+                                    <p class="mt-1 leading-relaxed">Appointed to drive digital literacy and represent brand ecosystems within UNJ. Promoting educational tools, interactive technologies, and local workshops.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2025 CONTENT -->
+                <div id="timeline-2025" class="timeline-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-white/10 pb-3 gap-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Large-Scale Program Architecture</h3>
+                            <p class="text-xs text-brand-neonPurple">Humanitarian Outreach & Content Strategy</p>
+                        </div>
+                        <span class="self-start md:self-center px-3 py-0.5 rounded-full bg-brand-neonPurple/15 text-brand-neonPurple text-[10px] font-semibold">2025 Achievements</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs text-slate-300">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-indigo-500/15 text-indigo-300 mt-0.5"><i class="fa-solid fa-gift text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Program Manager — Soco Giving</h4>
+                                    <p class="text-[10px] text-slate-400">Jan 2025 – Present</p>
+                                    <p class="mt-1 leading-relaxed">Mobilized 20+ monthly missions reaching 1,000+ vulnerable Jabodetabek participants. Program designs included custom museum field trips, creative hands-on macrame & puzzle workshops, and direct aid delivery inside scavenger colonies.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-pink-500/15 text-pink-300 mt-0.5"><i class="fa-solid fa-shirt text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Admin & Event Development — Lokalaja (Fashion Brand)</h4>
+                                    <p class="text-[10px] text-slate-400">Nov 2025 – Present</p>
+                                    <p class="mt-1 leading-relaxed">Managing daily warehouse stock operations, product inventories, executing responsive content-calendar posts, and supporting interactive sales exhibits.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-cyan-500/15 text-cyan-300 mt-0.5"><i class="fa-solid fa-book-open text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Material Developer — Kawan Bestari</h4>
+                                    <p class="text-[10px] text-slate-400">Feb 2025 – Sep 2025</p>
+                                    <p class="mt-1 leading-relaxed">Conducted primary focus group and curriculum evaluations to structure and author learning syllabi compliant with dynamic benchmarks.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-orange-500/15 text-orange-300 mt-0.5"><i class="fa-solid fa-video text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Host Live Streaming — PT Dami Sariwana</h4>
+                                    <p class="text-[10px] text-slate-400">Jan 2025</p>
+                                    <p class="mt-1 leading-relaxed">Executed active interactive streaming to drive customer purchase paths, providing answers to technical health formulation questions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2024 CONTENT -->
+                <div id="timeline-2024" class="timeline-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-white/10 pb-3 gap-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Advocacy Initiatives & Student Leadership</h3>
+                            <p class="text-xs text-cyan-400">Mental Health Promotion & Inter-University Competition Designs</p>
+                        </div>
+                        <span class="self-start md:self-center px-3 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 text-[10px] font-semibold">2024 Milestones</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs text-slate-300">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-teal-500/15 text-teal-300 mt-0.5"><i class="fa-solid fa-heart-pulse text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Brand Ambassador — SCAP (Social Connect)</h4>
+                                    <p class="text-[10px] text-slate-400">July – August 2024</p>
+                                    <p class="mt-1 leading-relaxed">Created over 30 education campaigns highlighting clinical self-help resources. Delivered high-engagement seminars to 100+ active students.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-blue-500/15 text-blue-300 mt-0.5"><i class="fa-solid fa-language text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Vice Event Coordinator — BEM UNJ Competitions</h4>
+                                    <p class="text-[10px] text-slate-400">September – November 2024</p>
+                                    <p class="mt-1 leading-relaxed">Delegated production workflows to cross-functional teams, authored competition Terms of Reference guidelines, and resolved schedule blockages.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-purple-500/15 text-purple-300 mt-0.5"><i class="fa-solid fa-truck text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Logistics Staff — La Semaine Française UNJ</h4>
+                                    <p class="text-[10px] text-slate-400">January 2024</p>
+                                    <p class="mt-1 leading-relaxed">Coordinated rental protocols, arranged French embassy permissions, and set up supplier networks for theatrical frameworks.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-pink-500/15 text-pink-300 mt-0.5"><i class="fa-solid fa-bullhorn text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">HPD Staff — BEM Prodi French UNJ</h4>
+                                    <p class="text-[10px] text-slate-400">June 2024</p>
+                                    <p class="mt-1 leading-relaxed">Created structured infographics and marketing content for departmental accounts, building responsive feedback loops for inquiries.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2023 CONTENT -->
+                <div id="timeline-2023" class="timeline-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-white/10 pb-3 gap-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Foundations of Service & Operations</h3>
+                            <p class="text-xs text-yellow-400">Commercial Relations & Democratic Implementations</p>
+                        </div>
+                        <span class="self-start md:self-center px-3 py-0.5 rounded-full bg-yellow-500/15 text-yellow-300 text-[10px] font-semibold">2023 Groundwork</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs text-slate-300">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-red-500/15 text-red-300 mt-0.5"><i class="fa-solid fa-store text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Internship — Gramedia (Bintaro Plaza)</h4>
+                                    <p class="text-[10px] text-slate-400">June 2023</p>
+                                    <p class="mt-1 leading-relaxed">Actively resolved customer problems using standard operational procedures, maximizing positive ratings, and assisting in local inventory audits.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2.5">
+                                <div class="p-1.5 rounded-lg bg-yellow-500/15 text-yellow-300 mt-0.5"><i class="fa-solid fa-square-poll-vertical text-xs"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Administrative Staff — KPU Prodi UNJ</h4>
+                                    <p class="text-[10px] text-slate-400">December 2023</p>
+                                    <p class="mt-1 leading-relaxed">Authored regulatory voter registration guides to support fair representations during student council elections, optimizing voter turnouts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOFTWARES & KEY SKILLS SECTION -->
+    <section id="skills" class="py-16 px-4 sm:px-8 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Details/Progress Bars -->
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="text-brand-neonBlue font-semibold uppercase tracking-wider text-xs">Capabilities Matrix</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white leading-none">PROFESSIONAL SKILLS</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm">Combining leadership architectures, public communications, and modern analytical systems to drive CSR initiatives.</p>
+                    
+                    <div class="space-y-4 pt-2">
+                        <!-- Skill 1 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="font-semibold text-white">Program & Project Management</span>
+                                <span class="text-brand-neonBlue">95%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-brand-neonBlue to-brand-accent rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill 2 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="font-semibold text-white">Public Speaking & Emceeing</span>
+                                <span class="text-brand-neonPurple">90%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-brand-neonPurple to-pink-500 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill 3 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="font-semibold text-white">French Language (Conversational)</span>
+                                <span class="text-cyan-300">75%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-cyan-400 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill 4 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="font-semibold text-white">Data Analytics & Power BI</span>
+                                <span class="text-brand-neonBlue">65%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Interactive Software Pill Box (Replica of inspiration image visual details) -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center space-y-4">
+                    <!-- Glass pill holding badges -->
+                    <div class="text-center text-xs uppercase tracking-widest text-slate-300 bg-brand-indigo/40 px-5 py-1.5 rounded-full border border-brand-accent/20 shadow-inner">
+                        Software & Tools
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl w-full max-w-sm grid grid-cols-2 gap-3 text-center">
+                        <div class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all border border-white/10 flex flex-col items-center space-y-1">
+                            <div class="w-9 h-9 bg-[#00c4cc]/20 rounded-lg flex items-center justify-center text-[#00c4cc] text-lg">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <span class="font-bold text-white text-xs">Canva</span>
+                            <span class="text-[9px] text-slate-400">Visual Design & Assets</span>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all border border-white/10 flex flex-col items-center space-y-1">
+                            <div class="w-9 h-9 bg-black/40 rounded-lg flex items-center justify-center text-cyan-400 text-lg border border-cyan-400/20">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+                            <span class="font-bold text-white text-xs">CapCut</span>
+                            <span class="text-[9px] text-slate-400">Mobile Video Editing</span>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all border border-white/10 flex flex-col items-center space-y-1">
+                            <div class="w-9 h-9 bg-[#f2c811]/10 rounded-lg flex items-center justify-center text-[#f2c811] text-lg">
+                                <i class="fa-solid fa-chart-simple"></i>
+                            </div>
+                            <span class="font-bold text-white text-xs">Power BI</span>
+                            <span class="text-[9px] text-slate-400">Fundamental Analytics</span>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all border border-white/10 flex flex-col items-center space-y-1">
+                            <div class="w-9 h-9 bg-green-600/20 rounded-lg flex items-center justify-center text-green-400 text-lg">
+                                <i class="fa-regular fa-file-excel"></i>
+                            </div>
+                            <span class="font-bold text-white text-xs">Excel & Office</span>
+                            <span class="text-[9px] text-slate-400">Spreadsheet Auditing</span>
+                        </div>
+                    </div>
+
+                    <div class="text-[10px] text-slate-500 font-medium tracking-wide">
+                        *Actively expanding analytical competencies on Microsoft Power BI ecosystems.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE 3D PROJECT SLIDER SECTION (Matching the Inspiration image style exactly!) -->
+    <section id="projects" class="py-16 px-4 sm:px-8 relative bg-[#03001e] overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-brand-neonBlue font-semibold uppercase tracking-wider text-xs">Action & Outcomes</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-glow text-white">MY PROJECT SHOWCASE</h2>
+                <div class="h-[2px] w-16 bg-gradient-to-r from-brand-neonBlue to-brand-accent mx-auto"></div>
+                <p class="text-slate-400 text-xs sm:text-sm">Explore specific portfolios of impact where I served as Director, Presenter, and Ambassador.</p>
+            </div>
+
+            <!-- Carousel Wrapper containing items along a simulated curve -->
+            <div class="carousel-container relative py-6">
+                <div class="carousel-track flex justify-start items-center space-x-5 sm:space-x-6 px-[10%] sm:px-[25%] transition-transform duration-500">
+                    
+                    <!-- Carousel Card 1: VolunFun -->
+                    <div class="carousel-item active glass-panel p-5 rounded-2xl border-2 border-brand-accent/20 flex flex-col justify-between h-[380px] shrink-0" data-index="0">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-0.5 bg-[#22d3ee]/20 text-[#22d3ee] rounded-full text-[9px] font-bold uppercase tracking-wider">Social/Interactive</span>
+                            <span class="text-slate-500 font-bold text-xs">01/05</span>
+                        </div>
+                        <div class="my-4 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-[#22d3ee]/10 flex items-center justify-center text-[#22d3ee] text-xl">
+                                <i class="fa-solid fa-hands-holding-child"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">VolunFun Engagements</h3>
+                            <p class="text-[11px] text-slate-300 line-clamp-4 leading-relaxed">Designed, launched, and evaluated over 10 theme-based digital & social outreach structures in regional community centers. Hosted events as bilingual MC, adapting operational timelines dynamically to manage localized emergencies.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between items-center text-[10px]">
+                            <span class="text-slate-400">Feb 2026 - Present</span>
+                            <span class="text-brand-neonBlue font-semibold">Program Manager</span>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Card 2: Soco Giving -->
+                    <div class="carousel-item glass-panel p-5 rounded-2xl border border-white/10 flex flex-col justify-between h-[380px] shrink-0" data-index="1">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-0.5 bg-pink-500/20 text-pink-300 rounded-full text-[9px] font-bold uppercase tracking-wider">Community Welfare</span>
+                            <span class="text-slate-500 font-bold text-xs">02/05</span>
+                        </div>
+                        <div class="my-4 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-300 text-xl">
+                                <i class="fa-solid fa-handshake-angle"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">Soco Giving Initiatives</h3>
+                            <p class="text-[11px] text-slate-300 line-clamp-4 leading-relaxed">Directed 20+ monthly missions serving 1,000+ underserved participants across Jabodetabek. Hosted craft workshops (macrame/painting) and executed sensitive material aid inside scavenger compounds.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between items-center text-[10px]">
+                            <span class="text-slate-400">Jan 2025 - Present</span>
+                            <span class="text-brand-neonPurple font-semibold">Program Manager</span>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Card 3: SCAP mental health -->
+                    <div class="carousel-item glass-panel p-5 rounded-2xl border border-white/10 flex flex-col justify-between h-[380px] shrink-0" data-index="2">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-0.5 bg-emerald-500/20 text-emerald-300 rounded-full text-[9px] font-bold uppercase tracking-wider">Advocacy / Digital Campaign</span>
+                            <span class="text-slate-500 font-bold text-xs">03/05</span>
+                        </div>
+                        <div class="my-4 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-300 text-xl">
+                                <i class="fa-solid fa-head-side-virus"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">SCAP - Social Connect</h3>
+                            <p class="text-[11px] text-slate-300 line-clamp-4 leading-relaxed">Designed 30+ accessible digital assets focused on mental health literacy, driving thousands of online engagements. Presented high-impact lectures to groups of 100+ university students.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between items-center text-[10px]">
+                            <span class="text-slate-400">Jul - Aug 2024</span>
+                            <span class="text-emerald-300 font-semibold">Brand Ambassador</span>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Card 4: UNJ Art & Language Competitions -->
+                    <div class="carousel-item glass-panel p-5 rounded-2xl border border-white/10 flex flex-col justify-between h-[380px] shrink-0" data-index="3">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-0.5 bg-amber-500/20 text-amber-300 rounded-full text-[9px] font-bold uppercase tracking-wider">Academic Events</span>
+                            <span class="text-slate-500 font-bold text-xs">04/05</span>
+                        </div>
+                        <div class="my-4 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-300 text-xl">
+                                <i class="fa-solid fa-masks-theater"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">Language & Art Competitions</h3>
+                            <p class="text-[11px] text-slate-300 line-clamp-4 leading-relaxed">Managed complex administrative frameworks and schedule pipelines within BEM Fakultas UNJ. Structured comprehensive Terms of Reference documents, bridging relationships across expert panels.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between items-center text-[10px]">
+                            <span class="text-slate-400">Sep - Nov 2024</span>
+                            <span class="text-amber-300 font-semibold">Vice Coordinator</span>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Card 5: GSA tech tools promotion -->
+                    <div class="carousel-item glass-panel p-5 rounded-2xl border border-white/10 flex flex-col justify-between h-[380px] shrink-0" data-index="4">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-0.5 bg-indigo-500/20 text-cyan-300 rounded-full text-[9px] font-bold uppercase tracking-wider">Tech Ambassador</span>
+                            <span class="text-slate-500 font-bold text-xs">05/05</span>
+                        </div>
+                        <div class="my-4 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center text-cyan-400 text-xl">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">Google Brand Advocacies</h3>
+                            <p class="text-[11px] text-slate-300 line-clamp-4 leading-relaxed">Organized tech integration seminars and digital tool awareness within Universitas Negeri Jakarta, helping students deploy active productivity strategies.</p>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between items-center text-[10px]">
+                            <span class="text-slate-400">Apr 2026 - Present</span>
+                            <span class="text-cyan-300 font-semibold">Student Ambassador</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Curved Navigation Controls (Inspired by bottom slider of reference image) -->
+            <div class="flex justify-center items-center space-x-5 mt-6">
+                <button onclick="prevSlide()" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white hover:border-brand-neonBlue hover:text-brand-neonBlue transition-all">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                </button>
+                <div class="flex space-x-2" id="carousel-dots">
+                    <span onclick="setSlide(0)" class="w-2.5 h-2.5 rounded-full bg-brand-neonBlue cursor-pointer transition-all"></span>
+                    <span onclick="setSlide(1)" class="w-3 h-2.5 bg-slate-600 rounded-full cursor-pointer transition-all"></span>
+                    <span onclick="setSlide(2)" class="w-3 h-2.5 bg-slate-600 rounded-full cursor-pointer transition-all"></span>
+                    <span onclick="setSlide(3)" class="w-3 h-2.5 bg-slate-600 rounded-full cursor-pointer transition-all"></span>
+                    <span onclick="setSlide(4)" class="w-3 h-2.5 bg-slate-600 rounded-full cursor-pointer transition-all"></span>
+                </div>
+                <button onclick="nextSlide()" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white hover:border-brand-neonBlue hover:text-brand-neonBlue transition-all">
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION, CREDENTIALS & AWARDS SECTION -->
+    <section id="about" class="py-16 px-4 sm:px-8 relative bg-[#120c3e]/10">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <!-- Left: Academic Background -->
+                <div class="space-y-4">
+                    <span class="text-brand-neonBlue font-semibold uppercase tracking-wider text-xs">Background academic</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">EDUCATION & ACCREDITATIONS</h2>
+                    <div class="h-[2px] w-12 bg-brand-neonBlue"></div>
+                    
+                    <div class="space-y-4 pt-2">
+                        
+                        <!-- UNJ -->
+                        <div class="p-5 rounded-xl glass-card relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 p-2 text-cyan-500/10 text-5xl font-extrabold tracking-widest select-none">UNJ</div>
+                            <span class="text-[10px] text-cyan-400 font-semibold uppercase tracking-wider">Undergraduate Degree</span>
+                            <h3 class="font-bold text-white text-base mt-0.5">Universitas Negeri Jakarta</h3>
+                            <p class="text-slate-300 text-xs">Bachelor in French Language Education</p>
+                            <div class="mt-2.5 flex justify-between items-center text-[10px] text-slate-400">
+                                <span>2023 - Present</span>
+                                <span class="px-2 py-0.5 bg-brand-accent/20 rounded text-white font-medium">GPA: 3.80 / 4.00</span>
+                            </div>
+                        </div>
+
+                        <!-- SMAN 11 -->
+                        <div class="p-5 rounded-xl glass-card relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 p-2 text-white/5 text-5xl font-extrabold tracking-widest select-none">SMA</div>
+                            <span class="text-[10px] text-brand-neonPurple font-semibold uppercase tracking-wider">High School</span>
+                            <h3 class="font-bold text-white text-base mt-0.5">SMA Negeri 11 Tangerang Selatan</h3>
+                            <p class="text-slate-300 text-xs">Major in Social Science</p>
+                            <div class="mt-2.5 flex justify-between items-center text-[10px] text-slate-400">
+                                <span>2020 - 2023</span>
+                                <span class="px-2 py-0.5 bg-brand-indigo rounded text-slate-300 font-medium">Score: 87.77 / 100</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right: Awards & Recognitions -->
+                <div class="space-y-4">
+                    <span class="text-brand-neonPurple font-semibold uppercase tracking-wider text-xs">Recognitions & Merit</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">AWARDS & SCHOLARSHIPS</h2>
+                    <div class="h-[2px] w-12 bg-brand-neonPurple"></div>
+
+                    <div class="space-y-3 pt-2">
+                        
+                        <!-- GSA Award -->
+                        <div class="flex items-start space-x-3.5 p-3.5 rounded-xl glass-card">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-300 text-lg shrink-0">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-xs">Google Student Ambassador (GSA)</h4>
+                                <p class="text-[10px] text-slate-400">April 2026 - Present</p>
+                                <p class="text-[11px] text-slate-300 mt-0.5">Selected student leader to drive technological integration, representing Google initiatives across Indonesia.</p>
+                            </div>
+                        </div>
+
+                        <!-- International Conference Presenter -->
+                        <div class="flex items-start space-x-3.5 p-3.5 rounded-xl glass-card">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-300 text-lg shrink-0">
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-xs">Academic Conference Presenter</h4>
+                                <p class="text-[10px] text-slate-400">Universitas Negeri Jakarta, Nov 2025</p>
+                                <p class="text-[11px] text-slate-300 mt-0.5">Presented an original research-based scientific paper at an international academic conference colloquium.</p>
+                            </div>
+                        </div>
+
+                        <!-- BSI Scholarship -->
+                        <div class="flex items-start space-x-3.5 p-3.5 rounded-xl glass-card">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-300 text-lg shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-xs">BSI Scholarship Awardee</h4>
+                                <p class="text-[10px] text-slate-400">Bank Syariah Indonesia, Nov 2024 - Present</p>
+                                <p class="text-[11px] text-slate-300 mt-0.5">Recipient of merit scholarship recognition awarded to academic high-performers showing leadership competence.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE CONTACT & CSR ENQUIRY SECTION -->
+    <section id="contact" class="py-16 px-4 sm:px-8 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="glass-panel rounded-2xl p-6 sm:p-10 border-brand-accent/20 shadow-2xl relative overflow-hidden">
+                <!-- Background visual glow -->
+                <div class="absolute -top-10 -right-10 w-52 h-52 bg-brand-neonBlue/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-52 h-52 bg-indigo-900/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+                    
+                    <!-- Text Info Column -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <span class="text-brand-neonBlue font-semibold uppercase tracking-wider text-xs">Let's Connect</span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white text-glow leading-tight">PARTNER ON CSR & LEADERSHIP</h2>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Looking to integrate creative leadership, bilingual emceeing, and program management into your brand operations? Reach out now. I'm excited to brainstorm!
+                        </p>
+
+                        <!-- Live info widgets -->
+                        <div class="space-y-3 pt-2 text-xs">
+                            <div class="flex items-center space-x-2.5 text-slate-300 hover:text-white transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-brand-neonBlue"><i class="fa-solid fa-envelope text-xs"></i></div>
+                                <span class="font-medium">arrbianfahrza35@gmail.com</span>
+                            </div>
+                            <div class="flex items-center space-x-2.5 text-slate-300 hover:text-white transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-brand-neonPurple"><i class="fa-solid fa-phone text-xs"></i></div>
+                                <span class="font-medium">0821-8044-8273</span>
+                            </div>
+                            <div class="flex items-center space-x-2.5 text-slate-300 hover:text-white transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 text-cyan-300"><i class="fa-solid fa-location-dot text-xs"></i></div>
+                                <span class="font-medium">Tangerang Selatan, Banten, Indonesia</span>
+                            </div>
+                        </div>
+
+                        <!-- Social Handles -->
+                        <div class="flex space-x-3 pt-2">
+                            <a href="https://linkedin.com/in/muhamad-arbian-fahriza-putra-09bb6a275" target="_blank" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-brand-neonBlue hover:border-brand-neonBlue transition-all transform hover:scale-105">
+                                <i class="fa-brands fa-linkedin-in text-sm"></i>
+                            </a>
+                            <a href="mailto:arrbianfahrza35@gmail.com" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-brand-neonPurple hover:border-brand-neonPurple transition-all transform hover:scale-105">
+                                <i class="fa-regular fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Messaging Form (Replacing prompt boxes) -->
+                    <div class="lg:col-span-6">
+                        <form id="contact-form" class="space-y-3 glass-card p-5 rounded-xl border-white/10">
+                            <h3 class="text-sm font-bold text-white border-b border-white/10 pb-1.5">Direct Message</h3>
+                            
+                            <div>
+                                <label class="block text-[9px] uppercase text-slate-400 font-bold mb-0.5 tracking-wider">Your Name</label>
+                                <input type="text" id="form-name" required placeholder="Faisal Fathin" class="w-full bg-[#03001e]/60 border border-white/10 focus:border-brand-neonBlue text-xs text-slate-100 px-3 py-2 rounded-lg outline-none transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-[9px] uppercase text-slate-400 font-bold mb-0.5 tracking-wider">Your Email</label>
+                                <input type="email" id="form-email" required placeholder="hello@company.com" class="w-full bg-[#03001e]/60 border border-white/10 focus:border-brand-neonBlue text-xs text-slate-100 px-3 py-2 rounded-lg outline-none transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-[9px] uppercase text-slate-400 font-bold mb-0.5 tracking-wider">Your Inquiry / Message</label>
+                                <textarea id="form-message" rows="3" required placeholder="Let's build CSR programs..." class="w-full bg-[#03001e]/60 border border-white/10 focus:border-brand-neonBlue text-xs text-slate-100 px-3 py-2 rounded-lg outline-none transition-colors"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-2 bg-gradient-to-r from-brand-neonBlue to-brand-accent hover:from-brand-accent hover:to-brand-neonBlue text-black font-bold text-xs rounded-lg transition-all duration-300 shadow-md transform active:scale-95">
+                                Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
+                            </button>
+                            
+                            <!-- Custom Message Status (No Alert) -->
+                            <div id="form-status" class="hidden text-center text-[11px] p-2 rounded-lg mt-2"></div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer Meta -->
+            <div class="text-center mt-10 text-[10px] text-slate-500 font-light space-y-0.5">
+                <p>&copy; 2026 Muhamad Arbian Fahriza Putra. All rights reserved.</p>
+                <p>Designed with ❤️ using Helvetica typography inspired by <span class="italic">image_d0e8ca.jpg</span> frameworks.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Form response system (replacing alerts)
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            
+            // Highlight success message without blocking flow
+            formStatus.textContent = `Merci, ${name}! Your message was successfully routed.`;
+            formStatus.className = "text-center text-[11px] p-2 rounded-lg mt-2 bg-emerald-500/20 text-emerald-300 block";
+            
+            // Reset input values
+            contactForm.reset();
+            setTimeout(() => {
+                formStatus.className = "hidden";
+            }, 6000);
+        });
+
+        // Interactive Timeline Selector Logic
+        function switchTimeline(activeId) {
+            // Find all timeline contents & buttons
+            const contents = document.querySelectorAll('.timeline-content');
+            const buttons = document.querySelectorAll('.timeline-btn');
+
+            // Hide all content areas
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Revert all buttons to default state
+            buttons.forEach(button => {
+                button.classList.add('opacity-60');
+                button.classList.remove('border-2', 'border-brand-neonBlue/80', 'ring-2', 'ring-brand-neonBlue/10', 'bg-gradient-to-br', 'from-brand-indigo/50', 'to-brand-deep');
+                const titleText = button.querySelector('div');
+                if (titleText) {
+                    titleText.classList.remove('text-brand-neonBlue');
+                    titleText.classList.add('text-slate-400');
+                }
+            });
+
+            // Show current active content
+            document.getElementById(activeId).classList.remove('hidden');
+
+            // Set current button state
+            const targetBtn = document.getElementById('btn-' + activeId);
+            if (targetBtn) {
+                targetBtn.classList.remove('opacity-60');
+                targetBtn.classList.add('border-2', 'border-brand-neonBlue/80', 'ring-2', 'ring-brand-neonBlue/10', 'bg-gradient-to-br', 'from-brand-indigo/50', 'to-brand-deep');
+                const titleText = targetBtn.querySelector('div');
+                if (titleText) {
+                    titleText.classList.remove('text-slate-400');
+                    titleText.classList.add('text-brand-neonBlue');
+                }
+            }
+        }
+
+        // Project Carousel Swipe/Click Navigation
+        let activeSlideIndex = 0;
+        const totalSlides = 5;
+
+        function updateCarousel() {
+            const track = document.querySelector('.carousel-track');
+            const items = document.querySelectorAll('.carousel-item');
+            const dots = document.getElementById('carousel-dots').children;
+
+            // Recalculate offsets based on layout
+            const isMobile = window.innerWidth < 640;
+            const itemWidth = isMobile ? 250 : 290;
+            const gap = isMobile ? 20 : 24;
+            const multiplier = itemWidth + gap;
+
+            // Translate track
+            track.style.transform = `translateX(${-activeSlideIndex * multiplier}px)`;
+
+            // Toggle item state classes
+            items.forEach((item, index) => {
+                if (index === activeSlideIndex) {
+                    item.classList.add('active');
+                    item.classList.remove('opacity-40');
+                } else {
+                    item.classList.remove('active');
+                    item.classList.add('opacity-40');
+                }
+            });
+
+            // Synchronize control indicators (dots)
+            for (let i = 0; i < dots.length; i++) {
+                if (i === activeSlideIndex) {
+                    dots[i].className = "w-2.5 h-2.5 rounded-full bg-brand-neonBlue cursor-pointer transition-all";
+                } else {
+                    dots[i].className = "w-3 h-2.5 bg-slate-600 rounded-full cursor-pointer transition-all";
+                }
+            }
+        }
+
+        function nextSlide() {
+            activeSlideIndex = (activeSlideIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            activeSlideIndex = (activeSlideIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function setSlide(index) {
+            activeSlideIndex = index;
+            updateCarousel();
+        }
+
+        // Swipe Touch Handlers for mobile devices
+        let startX = 0;
+        const trackElement = document.querySelector('.carousel-track');
+
+        trackElement.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        trackElement.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            if (diff > 50) {
+                nextSlide();
+            } else if (diff < -50) {
+                prevSlide();
+            }
+        });
+
+        // Mobile responsive menu trigger
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Setup Carousel alignment on window resize
+        window.addEventListener('resize', () => {
+            updateCarousel();
+        });
+
+        // Initial launch setups
+        window.onload = function() {
+            updateCarousel();
+        };
+    </script>
+</body>
+</html>
